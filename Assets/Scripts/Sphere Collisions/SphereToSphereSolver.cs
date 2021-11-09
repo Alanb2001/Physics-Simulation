@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Sphere_Collisions
 {
@@ -6,22 +7,31 @@ namespace Sphere_Collisions
     {
         public GameObject sphere;
         public GameObject sphere2;
-
-        private float r1 = 0.5f;
-        private float r2 = 0.5f;
         
         public Vector3 velocity;
 
         private bool SphereDetection()
         {
-            Vector3 a = sphere.transform.position - sphere2.transform.position;
-            Vector3 v = velocity;
-            Vector3 d = a + v;
-            
-            
-            //Vector3 distance = sphere.transform.position - sphere2.transform.position;
-           //float length = distance.magnitude;
+           float r1 = sphere.GetComponent<MeshRenderer>().bounds.extents.magnitude;
+           float r2 = sphere2.GetComponent<MeshRenderer>().bounds.extents.magnitude;
+           Vector3 a = sphere.transform.position - sphere2.transform.position;
+           Vector3 v = velocity;
+           float q = Vector3.Angle(v, a);
+           float d = Mathf.Sin(q) + a.magnitude;
 
+           float e = Mathf.Sqrt(r1 + r2 * 2 - d * 2);
+           float vc = Mathf.Cos(q) + a.magnitude - e;
+           vc = vc + e + Mathf.Cos(q) + a.magnitude;
+
+           if (d < r1 + r2)
+           {
+               print("Hit");
+               return true;
+           }
+
+           //Vector3 distance = sphere.transform.position - sphere2.transform.position;
+           //float length = distance.magnitude;
+           //
            //float radius = sphere.GetComponent<MeshRenderer>().bounds.extents.magnitude +
            //         sphere2.GetComponent<MeshRenderer>().bounds.extents.magnitude;
            //
