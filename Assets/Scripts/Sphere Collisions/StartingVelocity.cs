@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StartingVelocity : MonoBehaviour
+namespace Sphere_Collisions
 {
-    public Vector3 velocity;
-    
-    void Update()
+    public class StartingVelocity : MonoBehaviour
     {
-        transform.position += velocity * Time.deltaTime;
+        public Vector3 velocity;
+    
+        void Update()
+        {
+            transform.position += velocity * Time.deltaTime;
+        }
     }
 }
