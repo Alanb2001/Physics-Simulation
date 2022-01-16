@@ -62,8 +62,8 @@ namespace Sphere_Collisions
                 {
                     Vector3 p1 = spheres[j].transform.position;
                     Vector3 p2 = spheres[i].transform.position;
-                    float r1 = spheres[j].GetComponent<MeshRenderer>().bounds.extents.magnitude;
-                    float r2 = spheres[i].GetComponent<MeshRenderer>().bounds.extents.magnitude;
+                    float r1 = spheres[j].GetComponent<MeshRenderer>().bounds.extents.magnitude / 2;
+                    float r2 = spheres[i].GetComponent<MeshRenderer>().bounds.extents.magnitude / 2;
                     Vector3 v1 = spheres[j].GetComponent<StartingVelocity>().velocity;
                     Vector3 v2 = spheres[i].GetComponent<StartingVelocity>().velocity;
                     float a = ((v1 - v2) * Time.deltaTime).sqrMagnitude;
