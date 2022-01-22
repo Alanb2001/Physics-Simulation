@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Sphere_Collisions
 {
-    public class StartingVelocity : MonoBehaviour
+    public class Velocity : MonoBehaviour
     {
         public Vector3 velocity;
         public float mass;
